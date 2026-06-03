@@ -2,9 +2,9 @@
 #define EXEMPLARLIVRO_H
 
 #include <iostream>
-#include <string>
-#include "Livro.h"
 #include "StatusEmprestimo.h"
+
+using namespace std;
 
 class ExemplarLivro
 {
@@ -13,13 +13,15 @@ private:
     StatusEmprestimo status;
 
 public:
-    ExemplarLivro(int nroEx, StatusEmprestimo sts);
-    ExemplarLivro();
-    int getNroEx() const;
+    ExemplarLivro(int nroEx);
+    // Getters
+    int getNroDoExemplar() const;
     StatusEmprestimo getStatus() const;
-
-    void setNroEx(const int nroDoExemplar);
-    void setStatus(const StatusEmprestimo status);
+    // Setters
+    void setNroDoExemplar(const int nroEx);
+    void setStatus(const StatusEmprestimo &status);
+    // Metodos
+    void imprimirDadosExemplar() const;
 };
 
 #endif

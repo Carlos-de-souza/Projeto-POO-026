@@ -1,86 +1,162 @@
 #include "Livro.h"
-#include "Editora.h"
-#include "Autor.h"
+#include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
 
-Livro::Livro(int cod, string tit, int edi, float pre, Editora &edit, int anoPubli, int quantDeExem, int nroDiasPermEmp) : codigo(cod), titulo(tit), edicao(edi), preco(pre), editora(edit), anoPublicacao(anoPubli), quantidadeDeExemplares(quantDeExem), nroDiasPermitidoEmprestimo(nroDiasPermEmp)
+Livro::Livro(int cod, string t, int ed, float p, int anPubli, int quantEx, int nroDPEm, std::vector<Autor> &aut, int nroPag)
 {
+    codigo = cod;
+    titulo = t;
+    edicao = ed;
+    preco = p;
+    anoPublicacao = anPubli;
+    quantidadeDeExemplares = quantEx;
+    nroDiasPermitidoEmprestimo = nroDPEm;
+    autores = aut;
+    nroPaginas = nroPag;
+    statusAgora = 0;
+    statusFuturo = 0;
 }
 
-int Livro::getCodigo()
+// Getters
+int Livro::getCodigo() const
 {
     return codigo;
 }
 
-string Livro::getTitulo()
+std::string Livro::getTitulo() const
 {
     return titulo;
 }
 
-int Livro::getEdicao()
+int Livro::getEdicao() const
 {
     return edicao;
 }
 
-float Livro::getPreco()
+float Livro::getPreco() const
 {
     return preco;
 }
 
-Editora Livro::getEditora()
-{
-    return this->editora;
-}
-
-int Livro::getAnoPublicacao()
+int Livro::getAnoPublicacao() const
 {
     return anoPublicacao;
 }
 
-int Livro::getQuantidadeDeExemplares()
+int Livro::getQuantidadeDeExemplares() const
 {
     return quantidadeDeExemplares;
 }
 
-int Livro::getNroDiasPermitidoEmprestimo()
+int Livro::getNroDiasPermitidoEmprestimo() const
 {
     return nroDiasPermitidoEmprestimo;
 }
 
-vector<Autor> Livro::getAutor()
+std::vector<Autor> Livro::getAutores() const
 {
+    return autores;
 }
 
-int Livro::getStatusAgora()
+int Livro::getNroPaginas() const
 {
+    return nroPaginas;
 }
 
-int Livro::getStatusFuturo()
+// Setters
+void Livro::setCodigo(int cod)
 {
+    codigo = cod;
 }
 
-int Livro::getNroPaginas()
+void Livro::setTitulo(string t)
 {
+    titulo = t;
 }
 
+void Livro::setEdicao(int ed)
+{
+    edicao = ed;
+}
+
+void Livro::setPreco(float p)
+{
+    preco = p;
+}
+
+void Livro::setAnoPublicacao(int anPubli)
+{
+    anoPublicacao = anPubli;
+}
+
+void Livro::setQuantidadeDeExemplares(int quantEx)
+{
+    quantidadeDeExemplares = quantEx;
+}
+
+void Livro::setNroDiasPermitidoEmprestimo(int nroDPEm)
+{
+    nroDiasPermitidoEmprestimo = nroDPEm;
+}
+
+void Livro::setAutores(std::vector<Autor> &aut)
+{
+    autores = &aut;
+}
+
+void Livro::setNroPaginas(int _n)
+{
+    nroPaginas = _n;
+}
+
+// Metodos do diagrama
+
+// Verifica se existe pelo menos um exemplar disponivel
 bool Livro::estaDisponivel() const
 {
+    for (int i = 0; i < (int)exemplares.size(); i++)
+    {
+        if (exemplares[i].getStatus() == StatusEmprestimo::DISPONIVEL)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
+// Cria automaticamente um determinado numero de exemplares
 void Livro::criarExemplares(int numero)
 {
+    for (int i = 0; i < numero; i++)
+    {
+        int nroExemplar = (int)exemplares.size() + 1;
+        ExemplarLivro novoExemplar(nroExemplar);
+        exemplares.push_back(novoExemplar);
+        quantidadeDeExemplares++;
+    }
 }
 
-ExemplarLivro Livro::getExemplarDisponivel() const
+// Retorna um ponteiro para o primeiro exemplar disponivel
+ExemplarLivro Livro::getExemplaresDisponivel()
 {
+    for (int i = 0; i < (int)exemplares.size(); i++)
+    {
+        if (exemplares[i].getStatus() == StatusEmprestimo::DISPONIVEL)
+        {
+            return &exemplares[i];
+        }
+    }
+    return nullptr;
 }
 
-void Livro::apresentarLivro()
+void Livro::imprimirDadosLivro() const
 {
-    cout << "---- LIVRO ----" << endl;
+    cout << "Codigo: " << codigo << endl;
     cout << "Titulo: " << titulo << endl;
-    cout << "Autor: " << autor << endl;
-    cout << "Identificador: " << identificador << endl;
-    editora.apresentarEditora();
+    cout << "Edicao: " << edicao << endl;
+    cout << "Ano: " << anoPublicacao << endl;
+    cout << "Exemplares: " << quantidadeDeExemplares << endl;
 }

@@ -1,37 +1,68 @@
-#include "Livro.h"
-#include "Endereco.h"
+#include <iostream>
+#include "Autor.h"
 #include "Editora.h"
-#include "Livro.cpp"
-#include "Endereco.cpp"
-#include "Editora.cpp"
-
-using namespace std;
+#include "Livro.h"
+#include "ExemplarLivro.h"
+#include "Usuario.h"
+#include "Acervo.h"
+#include "GerenciadorDeEmprestimo.h"
 
 int main()
 {
-    Endereco end1("Presidente Vargas", 255, "Jardim Nova Santa Paula", "São Carlos", "SP", "13566-060");
-    Endereco end2("15 de novembro", 165, "Centro", "São Carlos", "SP", "13564-560");
+    std::cout << "=== SISTEMA DE BIBLIOTECA ===" << std::endl;
 
-    Editora ed1(10, "Saraiva", end1);
-    Editora ed2(20, "Cassio", end2);
+    // --- Cadastro de Autores ---
+    Autor autor1(1, "Machado de Assis");
+    Autor autor2(2, "Clarice Lispector");
 
-    Livro l1("Senhor do aneis", "Tolkien", 1, ed1);
-    Livro l2("Herry Potter", "JK Rowling", 2, ed1);
-    Livro l3("Moby Dicy", "Melville", 3, ed2);
+    // --- Cadastro de Editora ---
+    Endereco endEditora("Rua das Flores", 100, "Centro", "Sao Paulo", "SP", "01000-000");
+    Editora editora1(1, "Editora Abril", &endEditora);
 
-    cout << l1.getTitulo() << endl;
-    cout << l2.getAutor() << endl;
-    cout << endl;
+    // --- Cadastro de Livros ---
+    std::vector<Autor> autoresLivro1;
+    autoresLivro1.push_back(autor1);
 
-    cout << "==== RELATÓRIO 1 ====" << endl;
-    l1.apresentarLivro();
-    cout << endl;
-    cout << "==== RELATÓRIO 2 ====" << endl;
-    l2.apresentarLivro();
-    cout << endl;
-    cout << "==== RELATÓRIO 3 ====" << endl;
-    l3.apresentarLivro();
-    cout << endl;
+    std::vector<Autor> autoresLivro2;
+    autoresLivro2.push_back(autor2);
+
+    Livro livro1(1, "Dom Casmurro", 1, 45.90, 1899, 0, 14, autoresLivro1, 256);
+    Livro livro2(2, "A Hora da Estrela", 3, 39.90, 1977, 0, 14, autoresLivro2, 88);
+
+    // --- Criar Exemplares ---
+    livro1.criarExemplares(3);
+    livro2.criarExemplares(2);
+
+    // --- Adicionar ao Acervo ---
+    Acervo meuAcervo;
+    meuAcervo.adicionarLivro(livro1);
+    meuAcervo.adicionarLivro(livro2);
+    meuAcervo.listarLivros();
+
+    // --- Cadastro de Usuarios ---
+    Usuario usuario1(1, "Rafael Silva", StatusUsuario::HABILITADO);
+    Usuario usuario2(2, "Maria Santos", StatusUsuario::HABILITADO);
+
+    // --- Criar Emprestimos ---
+    GerenciadorDeEmprestimo gerenciador;
+
+    ExemplarLivro *exDisponivel = livro1.getExemplaresDisponivel();
+    if (exDisponivel != nullptr)
+    {
+        gerenciador.criarEmprestimo(&usuario1, exDisponivel);
+    }
+
+    ExemplarLivro *exDisponivel2 = livro2.getExemplaresDisponivel();
+    if (exDisponivel2 != nullptr)
+    {
+        gerenciador.criarEmprestimo(&usuario2, exDisponivel2);
+    }
+
+    // --- Listar Emprestimos ---
+    gerenciador.listarTodosEmprestimosAtuais();
+
+    std::cout << std::endl
+              << "=== FIM ===" << std::endl;
 
     return 0;
 }

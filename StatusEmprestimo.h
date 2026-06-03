@@ -3,12 +3,12 @@
 
 #include <string>
 
-enum class StatusEmprestimo
-{
+enum class StatusEmprestimo {
+
     DISPONIVEL,
-    EMPRESTADO
+    EMPRESTADO,
 };
 
-std::string toString(StatusEmprestimo status);
+std::string statusEmprestimoToString(StatusEmprestimo s);
 
 #endif

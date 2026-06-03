@@ -3,22 +3,34 @@
 
 #include <iostream>
 #include <string>
-#include "StatusEmprestimo.h"
+#include <vector>
+#include "Usuario.h"
+#include "ItemEmprestimo.h"
+#include "ExemplarLivro.h"
+
+using std::vector;
 
 class Emprestimo
 {
 private:
-    int dataDeEmprestimo;
-    StatusEmprestimo status;
+    int codigo;
+    Usuario *usuario;
+    vector<ItemEmprestimo> itens;
 
 public:
-    Emprestimo(int dataDEm, const StatusEmprestimo &status);
-    int getDataDeEmp() const;
-    StatusEmprestimo getStatusEmp() const;
+    Emprestimo(int cod, Usuario *us);
 
-    void setDataDeEmp(const int dataDeEmprestimo);
-    void setStatusEmp(const StatusEmprestimo &status);
-    void dadosEmprestimo() const;
+    // Getters
+    int getCodigo() const;
+    Usuario *getUsuario() const;
+    vector<ItemEmprestimo> getItens() const;
+
+    // Setters
+    void setCodigo(int codigo);
+    void setUsuario(Usuario *us);
+
+    // Metodos
+    void adicionarItem(ExemplarLivro &exemplar);
+    void mostrarDetalhes() const;
 };
-
 #endif

@@ -5,6 +5,7 @@
 #include <string>
 
 using namespace std;
+
 class Endereco
 {
 private:
@@ -16,22 +17,26 @@ private:
     string cep;
 
 public:
-    Endereco(string r, int n, string b, string cid, string e, string c);
+    Endereco(string rua, int numero, string bairro, string cidade, string estado, string cep);
 
-    string getRua();
-    int getNumero();
-    string getBairro();
-    string getCidade();
-    string getEstado();
-    string getCep();
+    // Getters
+    string getRua() const;
+    int getNumero() const;
+    string getBairro() const;
+    string getCidade() const;
+    string getEstado() const;
+    string getCep() const;
 
-    void setRua(string rua);
-    void setNumero(int numero);
-    void setBairro(string bairro);
-    void setCidade(string cidade);
-    void setEstado(string estado);
-    void setCep(string cep);
-    void apresentarEndereco();
+    // Setters
+    void setRua(const string rua);
+    void setNumero(const int numero);
+    void setBairro(const string bairro);
+    void setCidade(const string cidade);
+    void setEstado(const string estado);
+    void setCep(const string cep);
+
+    // Metodos
+    void imprimirEndereco() const;
 };
 
 #endif

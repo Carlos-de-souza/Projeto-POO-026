@@ -8,19 +8,21 @@
 
 using std::vector;
 
-class Acervos
+class Acervo
 {
 private:
     vector<Livro> acervo;
 
 public:
-    Acervo(vector<Livro> acv);
     Acervo();
-    vector<Livro> getLivro() const;
-    Livro getLivroCod(const int codigo); // retorna o código do livro em acervo
 
-    void setLivro(const vector<Livro> &);
-    void adicionarLivro(const livro &lv);
+    // Getters
+    vector<Livro> getAcervo() const;
+
+    // Metodos do diagrama
+    void adicionarLivro(Livro livro);
+    void removerLivro(int codigo);
+    void listarLivros() const;
 };
 
 #endif

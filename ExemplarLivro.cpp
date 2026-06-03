@@ -1,25 +1,37 @@
 #include "ExemplarLivro.h"
+#include <iostream>
 
-ExemplarLivro::ExemplarLivro(int nroEx, StatusEmprestimo sts) : nroDoExemplar(nroEx), status(sts)
+ExemplarLivro::ExemplarLivro(int nroEx)
 {
+    nroDoExemplar = nroEx;
+    status = StatusEmprestimo::DISPONIVEL;
 }
 
-ExemplarLivro::ExemplarLivro()
+// Getters
+int ExemplarLivro::getNroDoExemplar() const
 {
-}
-
-int ExemplarLivro::getNroEx() const
-{
+    return nroDoExemplar;
 }
 
 StatusEmprestimo ExemplarLivro::getStatus() const
 {
+    return status;
 }
 
-void ExemplarLivro::setNroEx(const int nroDoExemplar)
+// Setters
+void ExemplarLivro::setNroDoExemplar(const int nroEx)
 {
+    nroDoExemplar = nroEx;
 }
 
-void ExemplarLivro::setStatus(const StatusEmprestimo status)
+void ExemplarLivro::setStatus(const StatusEmprestimo &status)
 {
+    this->status = status;
+}
+
+// Metodos
+void ExemplarLivro::imprimirDadosExemplar() const
+{
+    cout << "Exemplar: " << nroDoExemplar << endl;
+    cout << "Status: " << statusEmprestimoToString(status) << endl;
 }

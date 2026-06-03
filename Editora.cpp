@@ -1,39 +1,45 @@
 #include "Editora.h"
-#include "Endereco.h"
 
-using namespace std;
+Editora::Editora(int c, std::string n, Endereco *end) : codigo(c), nome(n), endereco(end)
+{
+}
 
-Editora::Editora(int cod, string n, Endereco &end) : codigo(cod), nome(n), endereco(end) {}
-
-int Editora::getCodigo()
+// Getters
+int Editora::getCodigo() const
 {
     return codigo;
 }
-string Editora::getNome()
+
+string Editora::getNome() const
 {
     return nome;
 }
-Endereco Editora::getEndereco()
+
+Endereco *Editora::getEndereco() const
 {
-    return this->endereco;
+    return endereco;
 }
 
-void Editora::setCodigo(int codigo)
+// Setters
+void Editora::setCodigo(int c)
 {
-    this->codigo = codigo;
+    codigo = c;
 }
-void Editora::setNome(string nome)
+
+void Editora::setNome(string n)
 {
-    this->nome = nome;
+    nome = n;
 }
-void Editora::setEndereco(Endereco &end)
+
+void Editora::setEndereco(Endereco *end)
 {
-    this->endereco = end;
+    endereco = end;
 }
-void Editora::apresentarEditora()
+
+// Metodos
+void Editora::imprimirDadosEditora() const
 {
-    cout << "---- EDITORA ----" << endl;
-    cout << "Código: " << codigo << endl;
-    cout << "Nome: " << nome << endl;
-    endereco.apresentarEndereco();
+    cout << "Editora: " << nome << endl;
+    cout << "Codigo: " << codigo << endl;
+    
 }

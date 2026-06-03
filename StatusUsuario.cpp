@@ -1,17 +1,12 @@
 #include "StatusUsuario.h"
 
-std::string toString(StatusUsuario status)
-{
-    switch (status)
-    {
-    case StatusUsuario::HABILITADO:
-        return "HABILITADO";
-    case StatusUsuario::EM_DEBITO:
-        return "EM DÉBITO";
-        break;
+std::string statusToString(StatusUsuario s) {
 
-    default:
-        return "ERRO";
-        break;
+    switch (s)
+    {
+    case StatusUsuario::HABILITADO: return "Habilitado";
+    case StatusUsuario::EM_DEBITO: return "Em Debito";
+
+    default: return "Invalido";
     }
 }

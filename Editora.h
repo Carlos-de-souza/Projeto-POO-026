@@ -12,18 +12,20 @@ class Editora
 private:
     int codigo;
     string nome;
-    Endereco endereco;
+    Endereco *endereco;
 
 public:
-    Editora(int cod, string n, Endereco &end);
-    int getCodigo();
-    string getNome();
-    Endereco getEndereco();
-
-    void setCodigo(int codigo);
-    void setNome(string nome);
-    void setEndereco(Endereco &end);
-    void apresentarEditora();
+    Editora(int c, string n, Endereco *end);
+    // Getters
+    int getCodigo() const;
+    string getNome() const;
+    Endereco *getEndereco() const;
+    // Setters
+    void setCodigo(int c);
+    void setNome(string n);
+    void setEndereco(Endereco *end);
+    // Metodos
+    void imprimirDadosEditora() const;
 };
 
 #endif

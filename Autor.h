@@ -10,17 +10,18 @@ class Autor
 {
 private:
     int codigo;
-    string nome;
+    string nomeAutor;
 
 public:
-    Autor(int cod, string n);
-    Autor();
+    Autor(int cod, string nAutor);
+
+    // Getters
     int getCodigo() const;
     string getNome() const;
 
-    void setCodigo(const codigo);
-    void setIdade(const nome);
-    void apresentarAutor() const;
+    // Setters
+    void setCodigo(const int codigo);
+    void setNome(const string nomeAutor);
 };
 
 #endif

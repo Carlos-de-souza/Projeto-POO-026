@@ -3,23 +3,25 @@
 
 #include <iostream>
 #include <string>
-#include "Livro.h"
-#include "Emprestimo.h"
+#include "ExemplarLivro.h"
+
+using namespace std;
 
 class ItemEmprestimo
 {
 private:
-    int dataParaDevolucao;
-    int dataQueFoiDevolvido;
+    int codigoDoExemplar;
 
 public:
-    ItemEmprestimo(int dPD, int dQFD);
-    int getDPDev() const;
-    int getDQFDev() const;
+    ItemEmprestimo(int codExemplar);
 
-    void setDPDev(const int dataParaDevolucao);
-    void setDQFDev(const int dataQueFoiDevolvido);
-    void dadosItemEmprestimo() const;
+    // Getters
+    int getCodigoDoExemplar() const;
+
+    // Setters
+    void setCodigoDoExemplar(int codExemplar);
+
+    // Metodos
+    void imprimirDadosItem() const;
 };
-
 #endif

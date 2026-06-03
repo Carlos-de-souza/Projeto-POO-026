@@ -1,61 +1,86 @@
 #include "Endereco.h"
 
-using namespace std;
-
-Endereco::Endereco(string r, int n, string b, string cid, string e, string c) : rua(r), numero(n), bairro(b), cidade(cid), estado(e), cep(c) {}
-
-string Endereco ::getRua()
+Endereco::Endereco(string rua, int numero, string bairro, string cidade, string estado, string cep)
 {
+    this->rua = rua;
+    this->numero = numero;
+    this->bairro = bairro;
+    this->cidadecidade;
+    this->estado = estado;
+    this->cep = cep;
+}
+
+// Getters
+string Endereco::getRua() const
+{
+
     return rua;
 }
-int Endereco ::getNumero()
+
+int Endereco::getNumero() const
 {
+
     return numero;
 }
-string Endereco ::getBairro()
+
+std::string Endereco::getBairro() const
 {
+
     return bairro;
 }
-string Endereco ::getCidade()
+
+std::string Endereco::getCidade() const
 {
+
     return cidade;
 }
-string Endereco ::getEstado()
+
+std::string Endereco::getEstado() const
 {
+
     return estado;
 }
-string Endereco ::getCep()
+
+std::string Endereco::getCep() const
 {
+
     return cep;
 }
 
-void Endereco ::setRua(string rua)
+// Setters
+void Endereco::setRua(const string r)
 {
     this->rua = rua;
 }
-void Endereco ::setNumero(int numero)
+
+void Endereco::setNumero(const int n)
 {
     this->numero = numero;
 }
-void Endereco ::setBairro(string bairro)
+
+void Endereco::setBairro(const string b)
 {
     this->bairro = bairro;
 }
-void Endereco ::setCidade(string cidade)
+
+void Endereco::setCidade(const string c)
 {
     this->cidade = cidade;
 }
-void Endereco ::setEstado(string estado)
+
+void Endereco::setEstado(const string estado)
 {
     this->estado = estado;
 }
-void Endereco ::setCep(string cep)
+
+void Endereco::setCep(const string cep)
 {
     this->cep = cep;
 }
-void Endereco ::apresentarEndereco()
+
+// Metodos
+void Endereco::imprimirEndereco() const
 {
-    cout << "---- ENDEREÇO ----" << endl;
     cout << "Rua: " << rua << endl;
     cout << "Número: " << numero << endl;
     cout << "Bairro: " << bairro << endl;

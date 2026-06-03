@@ -4,20 +4,21 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class Reserva
 {
 private:
-    int ID;
+    int id;
     int dataRealizacao;
 
 public:
-    Reserva(int id, int dReal);
-    int getID();
-    int getDataReal();
-
-    void setID(const int ID);
-    void setDataReal(const int dataRealizacao);
-    void dadosReserva() const;
+    Reserva(int id, int dataRealizacao);
+    int getId() const;
+    int getDataRealizacao() const;
+    void setId(const int id);
+    void setDataRealizacao(const int dataRealizacao);
+    void exibirReserva() const;
 };
 
-#endif
+#endif // RESERVA_H

@@ -3,11 +3,12 @@
 
 #include <string>
 
-enum class StatusUsuario
-{
-    HABILITADO;
-    EM_DEBITO;
+enum class StatusUsuario {
+
+    HABILITADO,
+    EM_DEBITO,
 };
-std::string toString(StatusUsuario status);
+
+std::string statusToString(StatusUsuario s);
 
 #endif

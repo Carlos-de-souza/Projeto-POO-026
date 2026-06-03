@@ -1,34 +1,24 @@
 #include "ItemEmprestimo.h"
 
-using std::cout;
-using std::endl;
-
-ItemEmprestimo::ItemEmprestimo(int dPD, int dQFD) : dataParaDevolucao(DPD), dataQueFoiDevolvido(dQFD)
+ItemEmprestimo::ItemEmprestimo(int codExemplar) : codigoDoExemplar(codExemplar)
 {
 }
 
-int ItemEmprestimo::getDPDev() const
+// Getters
+int ItemEmprestimo::getCodigoDoExemplar() const
 {
-    return dataParaDevolucao;
+    return codigoDoExemplar;
 }
 
-int ItemEmprestimo::getDQFDev() const
+// Setters
+void ItemEmprestimo::setCodigoDoExemplar(int codExemplar)
 {
-    return dataQueFoiDevolvido;
+    this->codigoDoExemplar = codExemplar;
 }
 
-void ItemEmprestimo::setDPDev(const int dataParaDevolucao)
+// Metodos
+// Imprime qual exemplar faz parte deste item de emprestimo
+void ItemEmprestimo::imprimirDadosItem() const
 {
-    this->dataParaDevolucao = dataParaDevolucao;
-}
-
-void ItemEmprestimo::setDQFDev(const int dataQueFoiDevolvido)
-{
-    this->dataQueFoiDevolvido = dataQueFoiDevolvido;
-}
-
-void ItemEmprestimo::dadosItemEmprestimo() const
-{
-    cout << "Data Para Devolucao: " << dataParaDevolucao << endl;
-    cout << "Data Que Foi Devolvido: " << dataQueFoiDevolvido << endl;
+    cout << "Exemplar: " << codigoDoExemplar << endl;
 }

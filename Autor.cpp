@@ -1,38 +1,22 @@
 #include "Autor.h"
 
-using std::cout;
-using std::endl;
-
-Autor::Autor(int cod, string n) : codigo(cod), nome(n)
-{
+Autor::Autor(int cod, string nAutor): codigo(cod), nomeAutor(nAutor) {
 }
 
-Autor::Autor()
-{
-}
-
-int Autor::getCodigo() const
-{
+// Getters
+int Autor::getCodigo() const {
     return codigo;
 }
 
-string Autor::getNome() const
-{
-    return nome;
+string Autor::getNome() const {
+    return nomeAutor;
 }
 
-void Autor::setCodigo(const codigo)
-{
+// Setters
+void Autor::setCodigo(const int codigo) {
     this->codigo = codigo;
 }
 
-void Autor::setIdade(const nome)
-{
-    this->nome = nome;
-}
-
-void Autor::apresentarAutor() const
-{
-    cout << "Código do autor: " << this->codigo << endl;
-    cout<< "Nome do autor" << this->nome <<endl
+void Autor::setNome(const string nomeAutor) {
+    this->nomeAutor = nomeAutor;
 }

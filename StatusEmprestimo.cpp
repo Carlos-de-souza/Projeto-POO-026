@@ -1,17 +1,12 @@
 #include "StatusEmprestimo.h"
 
-std::string toString(StatusEmprestimo status)
-{
-    switch (status)
-    {
-    case StatusEmprestimo::DISPONIVEL:
-        return "DISPONÍVEL";
-    case StatusEmprestimo::EMPRESTADO:
-        return "EMPRESTADO";
-        break;
+std::string statusEmprestimoToString(StatusEmprestimo s) {
 
-    default:
-        return "ERRO";
-        break;
+    switch (s)
+    {
+    case StatusEmprestimo::DISPONIVEL: return "Disponivel";
+    case StatusEmprestimo::EMPRESTADO: return "Emprestado";
+
+    default: return "Invalido";
     }
 }

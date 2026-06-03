@@ -15,15 +15,14 @@ private:
     StatusUsuario status;
 
 public:
-    Usuario(int cod, string n, const StatusUsuario &status);
-    Usuario();
+    Usuario(int cod, string n, StatusUsuario stat);
     int getCodigo() const;
     string getNome() const;
-    StatusUsuario getStatUser() const;
+    StatusUsuario getStatus() const;
 
-    void setCodigo(const int codigo);
-    void setNome(const string nome);
-    void setStatUser(const StatusUsuario &status);
+    void setCodigo(const int cod);
+    void setNome(const string n);
+    void setStatus(const StatusUsuario stat);
     void apresentarUsuario() const;
 };
 

@@ -1,34 +1,33 @@
 #include "Reserva.h"
 
-using std::cout;
-using std::endl;
-
-Reserva::Reserva(int id, int dReal) : ID(id), dataRealizacao(dReal)
+Reserva::Reserva(int id, int dataRealizacao)
 {
+    this->id = id;
+    this->dataRealizacao = dataRealizacao;
 }
 
-int Reserva::getID()
+int Reserva::getId() const
 {
-    return ID;
+    return id;
 }
 
-int Reserva::getDataReal()
+int Reserva::getDataRealizacao() const
 {
     return dataRealizacao;
 }
 
-void Reserva::setID(const int ID)
+void Reserva::setId(const int id)
 {
-    this->ID = ID;
+    this->id = id;
 }
 
-void Reserva::setDataReal(const int dataRealizacao)
+void Reserva::setDataRealizacao(const int dataRealizacao)
 {
     this->dataRealizacao = dataRealizacao;
 }
 
-void Reserva::dadosReserva() const
+void Reserva::exibirReserva() const
 {
-    cout << "ID: " << this->ID << endl;
-    cout << "Data de Realização: " << this->dataRealizacao << endl;
+    cout << "ID: " << id << endl;
+    cout << "Data de Realizacao: " << dataRealizacao << endl;
 }

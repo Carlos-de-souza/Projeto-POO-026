@@ -1,53 +1,49 @@
 #include "Usuario.h"
+#include <iostream>
 
 using std::cout;
 using std::endl;
 
-Usuario::Usuario(int cod, string n) : codigo(cod), nome(n)
+Usuario::Usuario(int cod, string n, StatusUsuario stat) : codigo(cod), nome(n), status(stat)
 {
 }
 
-Usuario::Usuario()
-{
-}
-
+// Getters
 int Usuario::getCodigo() const
 {
     return codigo;
 }
 
-string Usuario::getNome() const
+std::string Usuario::getNome() const
 {
     return nome;
 }
 
-StatusUsuario Usuario::getStatUser() const
+StatusUsuario Usuario::getStatus() const
 {
-    return this->status;
+    return status;
 }
 
-void Usuario::setCodigo(const int codigo)
+// Setters
+void Usuario::setCodigo(const int cod)
 {
+    codigo = cod;
 }
 
-void Usuario::setCodigo(const int codigo)
+void Usuario::setNome(const string n)
 {
-    this->codigo = codigo;
+    nome = n;
 }
 
-void Usuario::setNome(const string nome)
+void Usuario::setStatus(const StatusUsuario stat)
 {
-    this->nome = nome;
+    status = stat;
 }
 
-void Usuario::setStatUser(const StatusUsuario &status)
-{
-    this->status = status;
-}
-
+// Metodos
 void Usuario::apresentarUsuario() const
 {
-    cout << "Código do usuário: " << this->codigo << endl;
-    cout << "Nome do usuário: " << this->nome << endl;
-    cout << "Status do usuário: " << status.toString() << endl;
+    cout << "Codigo: " << codigo << endl;
+    cout << "Nome: " << nome << endl;
+    cout << "Status: " << statusToString(status) << endl;
 }
