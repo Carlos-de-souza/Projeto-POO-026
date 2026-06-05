@@ -1,9 +1,11 @@
 #include "Professor.h"
+#include <iostream>
 
-Professor::Professor(/* args */)
-{
-}
+Professor::Professor(int cod, string n, StatusUsuario stat) 
+    : Usuario(cod, n, stat) {}
 
-Professor::~Professor()
-{
+void Professor::apresentar() const {
+    std::cout << "[PROFESSOR] Codigo: " << codigo 
+              << " | Nome: " << nome 
+              << " | Status: " << statusToString(status) << std::endl;
 }

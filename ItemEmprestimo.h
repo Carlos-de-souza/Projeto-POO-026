@@ -11,6 +11,8 @@ class ItemEmprestimo
 {
 private:
     int codigoDoExemplar;
+    int dataParaDevolucao;
+    int dataQueFoiDevolvido;
 
 public:
     ItemEmprestimo(int codExemplar);

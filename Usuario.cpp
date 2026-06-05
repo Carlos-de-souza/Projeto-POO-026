@@ -1,49 +1,16 @@
 #include "Usuario.h"
-#include <iostream>
 
-using std::cout;
-using std::endl;
+Usuario::Usuario(int cod, string n, StatusUsuario stat) : codigo(cod), nome(n), status(stat) {}
 
-Usuario::Usuario(int cod, string n, StatusUsuario stat) : codigo(cod), nome(n), status(stat)
-{
-}
+int Usuario::getCodigo() const { return codigo; }
+string Usuario::getNome() const { return nome; }
+StatusUsuario Usuario::getStatus() const { return status; }
 
-// Getters
-int Usuario::getCodigo() const
-{
-    return codigo;
-}
+void Usuario::setCodigo(const int cod) { codigo = cod; }
+void Usuario::setNome(const string n) { nome = n; }
+void Usuario::setStatus(const StatusUsuario stat) { status = stat; }
 
-std::string Usuario::getNome() const
-{
-    return nome;
-}
-
-StatusUsuario Usuario::getStatus() const
-{
-    return status;
-}
-
-// Setters
-void Usuario::setCodigo(const int cod)
-{
-    codigo = cod;
-}
-
-void Usuario::setNome(const string n)
-{
-    nome = n;
-}
-
-void Usuario::setStatus(const StatusUsuario stat)
-{
-    status = stat;
-}
-
-// Metodos
-void Usuario::apresentarUsuario() const
-{
-    cout << "Codigo: " << codigo << endl;
-    cout << "Nome: " << nome << endl;
-    cout << "Status: " << statusToString(status) << endl;
+// Implementação simples da sobrecarga do operador ==
+bool Usuario::operator==(const Usuario& outro) const {
+    return this->codigo == outro.codigo;
 }
