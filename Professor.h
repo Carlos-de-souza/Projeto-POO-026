@@ -5,12 +5,12 @@
 
 class Professor : public Usuario
 {
-private:
-    // int codigo;
 public:
-    Professor(int cod, string n, StatusUsuario &stat);
-    ~Professor();
-    void apresentarProfessor() const;
+    Professor(int cod, string n, StatusUsuario stat);
+    virtual ~Professor() = default;
+
+    // Sobrescreve o método polimórfico
+    void apresentar() const override;
 };
 
-#endif // PROFESSOR_H
+#endif
